@@ -1,8 +1,7 @@
 @echo off
 @Title ~~ClixOS CMLine~~
 :startup
-set drive=~\cmline.bat
-cd ~
+set drive=%cd%
 cls
 echo                       ~~ClixOS CMLine~~
 echo.
@@ -68,7 +67,9 @@ goto menu1
 echo.
 echo Commands Called: dir-change
 set/p change="Type a directory to change the folder> "
-cd %change%
+if %change% == C:\ C:
+if %change% == .. cd..
+if %change% == %change% cd %change%
 set drive=%change%
 echo.
 goto menu1
